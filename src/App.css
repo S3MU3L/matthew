@@ -14,7 +14,7 @@ body,
 }
 
 body {
-  color: white;
+  color: #ff69b4;
 }
 
 button {
@@ -74,22 +74,28 @@ button {
   animation: introRise 2.4s ease forwards;
 
   text-shadow:
-    0 2px 12px rgba(0, 0, 0, 0.8),
-    0 0 30px rgba(0, 0, 0, 0.65);
+    0 2px 12px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(0, 0, 0, 0.7);
 }
 
 .eyebrow {
   margin: 0 0 22px;
 
-  color: rgba(255, 169, 214, 0.9);
+  color: #ff4fa3;
 
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.42em;
+
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.9),
+    0 0 18px rgba(255, 79, 163, 0.45);
 }
 
 .intro h1 {
   margin: 0;
+
+  color: #ff85c1;
 
   font-family: Georgia, serif;
   font-size: clamp(58px, 11vw, 120px);
@@ -98,9 +104,9 @@ button {
   letter-spacing: -0.055em;
 
   text-shadow:
-    0 0 35px rgba(255, 65, 164, 0.35),
-    0 0 90px rgba(142, 86, 255, 0.2),
-    0 4px 20px rgba(0, 0, 0, 0.85);
+    0 0 35px rgba(255, 105, 180, 0.45),
+    0 0 90px rgba(255, 50, 150, 0.22),
+    0 4px 20px rgba(0, 0, 0, 0.95);
 }
 
 .intro h1 span {
@@ -114,29 +120,34 @@ button {
   font-size: 0.42em;
   font-style: italic;
   letter-spacing: 0;
+
+  text-shadow:
+    0 0 25px rgba(255, 105, 180, 0.45),
+    0 3px 15px rgba(0, 0, 0, 0.9);
 }
 
 .intro-text {
   margin: 35px 0 38px;
 
-  color: rgba(255, 255, 255, 0.82);
+  color: #ff9dcc;
 
   font-size: 14px;
   letter-spacing: 0.08em;
 
   text-shadow:
-    0 2px 10px rgba(0, 0, 0, 0.9);
+    0 2px 10px rgba(0, 0, 0, 0.95),
+    0 0 18px rgba(255, 105, 180, 0.25);
 }
 
 .enter-button {
   pointer-events: auto;
 
-  border: 1px solid rgba(255, 142, 203, 0.45);
+  border: 1px solid rgba(255, 105, 180, 0.65);
   border-radius: 100px;
 
   padding: 15px 29px;
 
-  color: white;
+  color: #ffb6d9;
   background: rgba(255, 74, 166, 0.08);
 
   backdrop-filter: blur(15px);
@@ -146,7 +157,8 @@ button {
   letter-spacing: 0.08em;
 
   box-shadow:
-    0 5px 25px rgba(0, 0, 0, 0.3);
+    0 5px 25px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(255, 105, 180, 0.1);
 
   transition:
     transform 0.35s ease,
@@ -160,7 +172,7 @@ button {
   background: rgba(255, 74, 166, 0.18);
 
   box-shadow:
-    0 0 30px rgba(255, 66, 163, 0.2),
+    0 0 30px rgba(255, 66, 163, 0.3),
     0 8px 25px rgba(0, 0, 0, 0.35);
 }
 
@@ -219,7 +231,7 @@ button {
   transition: transform 1.5s ease;
 
   text-shadow:
-    0 2px 12px rgba(0, 0, 0, 0.85);
+    0 2px 12px rgba(0, 0, 0, 0.9);
 }
 
 .story-visible .story-content,
@@ -229,22 +241,24 @@ button {
 }
 
 .story-label {
-  margin-bottom: 13px;
+  margin: 0 0 13px;
 
-  color: #ff77bd;
+  color: #ff4fa3;
 
   font-size: 10px;
   letter-spacing: 0.42em;
 
   text-shadow:
-    0 2px 10px rgba(0, 0, 0, 0.9),
-    0 0 18px rgba(255, 75, 174, 0.35);
+    0 2px 10px rgba(0, 0, 0, 0.95),
+    0 0 18px rgba(255, 79, 163, 0.55);
 }
 
 .story h2,
 .memory h2,
 .video-story h2 {
   margin: 0 0 13px;
+
+  color: #ff85c1;
 
   font-family: Georgia, serif;
   font-size: clamp(30px, 5vw, 48px);
@@ -253,7 +267,7 @@ button {
 
   text-shadow:
     0 3px 18px rgba(0, 0, 0, 0.95),
-    0 0 35px rgba(0, 0, 0, 0.55);
+    0 0 35px rgba(255, 105, 180, 0.3);
 }
 
 .story p:not(.story-label),
@@ -263,24 +277,25 @@ button {
 
   max-width: 500px;
 
-  color: rgba(255, 255, 255, 0.78);
+  color: #ff9dcc;
 
   font-size: 14px;
   line-height: 1.8;
 
   text-shadow:
-    0 2px 12px rgba(0, 0, 0, 0.95);
+    0 2px 12px rgba(0, 0, 0, 0.98),
+    0 0 18px rgba(255, 105, 180, 0.2);
 }
 
 .story-button {
   pointer-events: auto;
 
-  border: 1px solid rgba(255, 124, 193, 0.4);
+  border: 1px solid rgba(255, 105, 180, 0.6);
   border-radius: 100px;
 
   padding: 12px 23px;
 
-  color: white;
+  color: #ffb6d9;
   background: rgba(10, 5, 18, 0.5);
 
   backdrop-filter: blur(14px);
@@ -288,7 +303,8 @@ button {
   cursor: pointer;
 
   box-shadow:
-    0 5px 20px rgba(0, 0, 0, 0.3);
+    0 5px 20px rgba(0, 0, 0, 0.3),
+    0 0 18px rgba(255, 105, 180, 0.08);
 
   transition:
     transform 0.3s ease,
@@ -302,7 +318,7 @@ button {
   background: rgba(255, 91, 176, 0.16);
 
   box-shadow:
-    0 0 25px rgba(255, 91, 176, 0.12),
+    0 0 25px rgba(255, 91, 176, 0.25),
     0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
@@ -370,6 +386,8 @@ button {
 .final-memory-content h2 {
   margin: 0 0 13px;
 
+  color: #ff85c1;
+
   font-family: Georgia, serif;
 
   font-size: clamp(30px, 5vw, 48px);
@@ -378,9 +396,9 @@ button {
   letter-spacing: -0.03em;
 
   text-shadow:
-    0 0 30px rgba(255, 72, 169, 0.18),
-    0 0 70px rgba(142, 86, 255, 0.1),
-    0 4px 20px rgba(0, 0, 0, 0.9);
+    0 0 30px rgba(255, 105, 180, 0.35),
+    0 0 70px rgba(255, 50, 150, 0.15),
+    0 4px 20px rgba(0, 0, 0, 0.95);
 }
 
 .final-memory-content p:not(.story-label) {
@@ -388,13 +406,14 @@ button {
 
   max-width: 500px;
 
-  color: rgba(255, 255, 255, 0.78);
+  color: #ff9dcc;
 
   font-size: 14px;
   line-height: 1.8;
 
   text-shadow:
-    0 2px 12px rgba(0, 0, 0, 0.95);
+    0 2px 12px rgba(0, 0, 0, 0.98),
+    0 0 18px rgba(255, 105, 180, 0.2);
 }
 
 .final-memory-visible .story-label {
@@ -420,12 +439,12 @@ button {
   right: 22px;
   bottom: 22px;
 
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 105, 180, 0.4);
   border-radius: 100px;
 
   padding: 9px 15px;
 
-  color: rgba(255, 255, 255, 0.75);
+  color: #ff9dcc;
 
   background: rgba(10, 7, 17, 0.55);
 
@@ -445,7 +464,7 @@ button {
 .music-button:hover {
   transform: translateY(-2px);
 
-  border-color: rgba(255, 120, 190, 0.35);
+  border-color: rgba(255, 105, 180, 0.65);
 
   background: rgba(25, 10, 30, 0.7);
 }
