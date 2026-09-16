@@ -68,14 +68,20 @@ button {
 
 .intro-content {
   width: min(90%, 700px);
+
   transform: translateY(20px);
+
   animation: introRise 2.4s ease forwards;
+
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(0, 0, 0, 0.65);
 }
 
 .eyebrow {
   margin: 0 0 22px;
 
-  color: rgba(255, 169, 214, 0.78);
+  color: rgba(255, 169, 214, 0.9);
 
   font-size: 11px;
   font-weight: 500;
@@ -93,7 +99,8 @@ button {
 
   text-shadow:
     0 0 35px rgba(255, 65, 164, 0.35),
-    0 0 90px rgba(142, 86, 255, 0.2);
+    0 0 90px rgba(142, 86, 255, 0.2),
+    0 4px 20px rgba(0, 0, 0, 0.85);
 }
 
 .intro h1 span {
@@ -112,10 +119,13 @@ button {
 .intro-text {
   margin: 35px 0 38px;
 
-  color: rgba(255, 255, 255, 0.66);
+  color: rgba(255, 255, 255, 0.82);
 
   font-size: 14px;
   letter-spacing: 0.08em;
+
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 .enter-button {
@@ -135,6 +145,9 @@ button {
 
   letter-spacing: 0.08em;
 
+  box-shadow:
+    0 5px 25px rgba(0, 0, 0, 0.3);
+
   transition:
     transform 0.35s ease,
     background 0.35s ease,
@@ -146,7 +159,9 @@ button {
 
   background: rgba(255, 74, 166, 0.18);
 
-  box-shadow: 0 0 30px rgba(255, 66, 163, 0.2);
+  box-shadow:
+    0 0 30px rgba(255, 66, 163, 0.2),
+    0 8px 25px rgba(0, 0, 0, 0.35);
 }
 
 /* =========================================
@@ -196,12 +211,15 @@ button {
   background: linear-gradient(
     180deg,
     rgba(4, 2, 10, 0),
-    rgba(4, 2, 10, 0.62)
+    rgba(4, 2, 10, 0.78)
   );
 
   transform: translateY(20px);
 
   transition: transform 1.5s ease;
+
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.85);
 }
 
 .story-visible .story-content,
@@ -217,6 +235,10 @@ button {
 
   font-size: 10px;
   letter-spacing: 0.42em;
+
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.9),
+    0 0 18px rgba(255, 75, 174, 0.35);
 }
 
 .story h2,
@@ -228,6 +250,10 @@ button {
   font-size: clamp(30px, 5vw, 48px);
   font-weight: 400;
   letter-spacing: -0.03em;
+
+  text-shadow:
+    0 3px 18px rgba(0, 0, 0, 0.95),
+    0 0 35px rgba(0, 0, 0, 0.55);
 }
 
 .story p:not(.story-label),
@@ -237,10 +263,13 @@ button {
 
   max-width: 500px;
 
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.78);
 
   font-size: 14px;
   line-height: 1.8;
+
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.95);
 }
 
 .story-button {
@@ -252,11 +281,14 @@ button {
   padding: 12px 23px;
 
   color: white;
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(10, 5, 18, 0.5);
 
   backdrop-filter: blur(14px);
 
   cursor: pointer;
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.3);
 
   transition:
     transform 0.3s ease,
@@ -267,9 +299,11 @@ button {
 .story-button:hover {
   transform: translateY(-2px);
 
-  background: rgba(255, 91, 176, 0.12);
+  background: rgba(255, 91, 176, 0.16);
 
-  box-shadow: 0 0 25px rgba(255, 91, 176, 0.12);
+  box-shadow:
+    0 0 25px rgba(255, 91, 176, 0.12),
+    0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 /* =========================================
@@ -313,7 +347,7 @@ button {
   background: linear-gradient(
     180deg,
     rgba(4, 2, 10, 0),
-    rgba(4, 2, 10, 0.68)
+    rgba(4, 2, 10, 0.82)
   );
 
   transform: translateY(35px) scale(0.97);
@@ -323,6 +357,9 @@ button {
   transition:
     transform 1.8s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 1.8s ease;
+
+  text-shadow:
+    0 2px 14px rgba(0, 0, 0, 0.9);
 }
 
 .final-memory-visible .final-memory-content {
@@ -342,7 +379,8 @@ button {
 
   text-shadow:
     0 0 30px rgba(255, 72, 169, 0.18),
-    0 0 70px rgba(142, 86, 255, 0.1);
+    0 0 70px rgba(142, 86, 255, 0.1),
+    0 4px 20px rgba(0, 0, 0, 0.9);
 }
 
 .final-memory-content p:not(.story-label) {
@@ -350,13 +388,14 @@ button {
 
   max-width: 500px;
 
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.78);
 
   font-size: 14px;
   line-height: 1.8;
-}
 
-/* Final scene gets a slightly stronger glow */
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.95);
+}
 
 .final-memory-visible .story-label {
   animation: finalLabel 1.8s ease both;
@@ -388,7 +427,7 @@ button {
 
   color: rgba(255, 255, 255, 0.75);
 
-  background: rgba(10, 7, 17, 0.45);
+  background: rgba(10, 7, 17, 0.55);
 
   backdrop-filter: blur(15px);
 
@@ -408,7 +447,7 @@ button {
 
   border-color: rgba(255, 120, 190, 0.35);
 
-  background: rgba(25, 10, 30, 0.6);
+  background: rgba(25, 10, 30, 0.7);
 }
 
 /* =========================================
