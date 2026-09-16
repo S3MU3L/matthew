@@ -1,0 +1,1065 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #03020a;
+  font-family: "DM Sans", sans-serif;
+}
+
+body {
+  color: white;
+}
+
+button {
+  font: inherit;
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.three-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.three-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================================
+   INTRO
+========================================= */
+
+.intro {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  transition:
+    opacity 1.8s ease,
+    visibility 1.8s ease;
+}
+
+.intro-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.intro-content {
+  width: min(90%, 700px);
+  transform: translateY(20px);
+  animation: introRise 2.4s ease forwards;
+}
+
+.eyebrow {
+  margin: 0 0 22px;
+  color: rgba(255, 169, 214, 0.78);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+}
+
+.intro h1 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: clamp(58px, 11vw, 120px);
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: -0.055em;
+  text-shadow:
+    0 0 35px rgba(255, 65, 164, 0.35),
+    0 0 90px rgba(142, 86, 255, 0.2);
+}
+
+.intro h1 span {
+  display: block;
+  margin: 13px 0;
+  color: #ff69b4;
+  font-family: "Times New Roman", serif;
+  font-size: 0.42em;
+  font-style: italic;
+  letter-spacing: 0;
+}
+
+.intro-text {
+  margin: 35px 0 38px;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+.enter-button {
+  pointer-events: auto;
+  border: 1px solid rgba(255, 142, 203, 0.45);
+  border-radius: 100px;
+  padding: 15px 29px;
+  color: white;
+  background: rgba(255, 74, 166, 0.08);
+  backdrop-filter: blur(15px);
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.enter-button:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 74, 166, 0.18);
+  box-shadow: 0 0 30px rgba(255, 66, 163, 0.2);
+}
+
+/* =========================================
+   STORY / MEMORY / VIDEO
+========================================= */
+
+.story,
+.memory,
+.video-story {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 24px 8vh;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 1.5s ease,
+    visibility 1.5s ease;
+}
+
+.story-visible,
+.memory-visible,
+.video-story-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.story-content,
+.memory-content,
+.video-story-content {
+  width: min(90%, 600px);
+  padding: 28px;
+  border-radius: 24px;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 2, 10, 0),
+    rgba(4, 2, 10, 0.62)
+  );
+  transform: translateY(20px);
+  transition: transform 1.5s ease;
+}
+
+.story-visible .story-content,
+.memory-visible .memory-content,
+.video-story-visible .video-story-content {
+  transform: translateY(0);
+}
+
+.story-label {
+  margin-bottom: 13px;
+  color: #ff77bd;
+  font-size: 10px;
+  letter-spacing: 0.42em;
+}
+
+.story h2,
+.memory h2,
+.video-story h2 {
+  margin: 0 0 13px;
+  font-family: Georgia, serif;
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+.story p:not(.story-label),
+.memory p:not(.story-label),
+.video-story p:not(.story-label) {
+  margin: 0 auto 24px;
+  max-width: 500px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.story-button {
+  pointer-events: auto;
+  border: 1px solid rgba(255, 124, 193, 0.4);
+  border-radius: 100px;
+  padding: 12px 23px;
+  color: white;
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.story-button:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 91, 176, 0.12);
+  box-shadow: 0 0 25px rgba(255, 91, 176, 0.12);
+}
+
+/* =========================================
+   FINAL MEMORY
+========================================= */
+
+.final-memory {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 24px 8vh;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 1.8s ease,
+    visibility 1.8s ease;
+}
+
+.final-memory-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.final-memory-content {
+  width: min(90%, 600px);
+  padding: 28px;
+  border-radius: 24px;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 2, 10, 0),
+    rgba(4, 2, 10, 0.68)
+  );
+  transform: translateY(35px) scale(0.97);
+  opacity: 0;
+  transition:
+    transform 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1.8s ease;
+}
+
+.final-memory-visible .final-memory-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.final-memory-content h2 {
+  margin: 0 0 13px;
+  font-family: Georgia, serif;
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-shadow:
+    0 0 30px rgba(255, 72, 169, 0.18),
+    0 0 70px rgba(142, 86, 255, 0.1);
+}
+
+.final-memory-content p:not(.story-label) {
+  margin: 0 auto 24px;
+  max-width: 500px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* Final scene gets a slightly stronger glow */
+.final-memory-visible .story-label {
+  animation: finalLabel 1.8s ease both;
+}
+
+.final-memory-visible h2 {
+  animation: finalTitle 2.2s 0.15s ease both;
+}
+
+.final-memory-visible p:not(.story-label) {
+  animation: finalParagraph 2.2s 0.35s ease both;
+}
+
+/* =========================================
+   MUSIC
+========================================= */
+
+.music-button {
+  position: absolute;
+  z-index: 10;
+  right: 22px;
+  bottom: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 100px;
+  padding: 9px 15px;
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(10, 7, 17, 0.45);
+  backdrop-filter: blur(15px);
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.music-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 120, 190, 0.35);
+  background: rgba(25, 10, 30, 0.6);
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes introRise {
+  from {
+    opacity: 0;
+    transform: translateY(45px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes finalLabel {
+  from {
+    opacity: 0;
+    letter-spacing: 0.7em;
+  }
+
+  to {
+    opacity: 1;
+    letter-spacing: 0.42em;
+  }
+}
+
+@keyframes finalTitle {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes finalParagraph {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .intro-content {
+    width: 92%;
+  }
+
+  .intro h1 {
+    font-size: clamp(54px, 18vw, 88px);
+  }
+
+  .intro-text {
+    margin-top: 28px;
+    font-size: 12px;
+  }
+
+  .enter-button {
+    padding: 14px 24px;
+    font-size: 13px;
+  }
+
+  .story,
+  .memory,
+  .video-story {
+    padding: 0 16px 9vh;
+  }
+
+  .story-content,
+  .memory-content,
+  .video-story-content {
+    width: min(94%, 600px);
+    padding: 20px;
+  }
+
+  .story h2,
+  .memory h2,
+  .video-story h2 {
+    font-size: 32px;
+  }
+
+  .story p:not(.story-label),
+  .memory p:not(.story-label),
+  .video-story p:not(.story-label) {
+    font-size: 13px;
+  }
+
+  .final-memory {
+    padding: 0 16px 9vh;
+  }
+
+  .final-memory-content {
+    width: min(94%, 600px);
+    padding: 20px;
+  }
+
+  .final-memory-content h2 {
+    font-size: 32px;
+  }
+
+  .final-memory-content p:not(.story-label) {
+    font-size: 13px;
+  }
+
+  .music-button {
+    right: 15px;
+    bottom: 15px;* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #03020a;
+  font-family: "DM Sans", sans-serif;
+}
+
+body {
+  color: white;
+}
+
+button {
+  font: inherit;
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.three-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.three-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================================
+   INTRO
+========================================= */
+
+.intro {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  pointer-events: none;
+
+  transition:
+    opacity 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 1.8s ease;
+}
+
+.intro-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.intro-content {
+  width: min(90%, 700px);
+
+  transform: translateY(20px);
+
+  animation: introRise 2.4s ease forwards;
+}
+
+.eyebrow {
+  margin: 0 0 22px;
+
+  color: rgba(255, 169, 214, 0.78);
+
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+}
+
+.intro h1 {
+  margin: 0;
+
+  font-family: Georgia, serif;
+  font-size: clamp(58px, 11vw, 120px);
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: -0.055em;
+
+  text-shadow:
+    0 0 35px rgba(255, 65, 164, 0.35),
+    0 0 90px rgba(142, 86, 255, 0.2);
+}
+
+.intro h1 span {
+  display: block;
+
+  margin: 13px 0;
+
+  color: #ff69b4;
+
+  font-family: "Times New Roman", serif;
+  font-size: 0.42em;
+  font-style: italic;
+  letter-spacing: 0;
+}
+
+.intro-text {
+  margin: 35px 0 38px;
+
+  color: rgba(255, 255, 255, 0.66);
+
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+.enter-button {
+  pointer-events: auto;
+
+  border: 1px solid rgba(255, 142, 203, 0.45);
+  border-radius: 100px;
+
+  padding: 15px 29px;
+
+  color: white;
+  background: rgba(255, 74, 166, 0.08);
+
+  backdrop-filter: blur(15px);
+
+  cursor: pointer;
+
+  letter-spacing: 0.08em;
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.enter-button:hover {
+  transform: translateY(-3px);
+
+  background: rgba(255, 74, 166, 0.18);
+
+  border-color: rgba(255, 142, 203, 0.65);
+
+  box-shadow:
+    0 0 30px rgba(255, 66, 163, 0.2),
+    0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.enter-button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* =========================================
+   STORY / MEMORY / VIDEO
+========================================= */
+
+.story,
+.memory,
+.video-story {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  padding: 0 24px 8vh;
+
+  text-align: center;
+  pointer-events: none;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(12px);
+
+  transition:
+    opacity 1.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.5s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 1.5s ease;
+}
+
+.story-visible,
+.memory-visible,
+.video-story-visible {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+.story-content,
+.memory-content,
+.video-story-content {
+  width: min(90%, 600px);
+
+  padding: 28px;
+
+  border-radius: 24px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(4, 2, 10, 0),
+    rgba(4, 2, 10, 0.62)
+  );
+
+  transform: translateY(25px);
+
+  opacity: 0;
+
+  transition:
+    transform 1.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1.35s ease;
+}
+
+.story-visible .story-content,
+.memory-visible .memory-content,
+.video-story-visible .video-story-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.story-label {
+  margin: 0 0 13px;
+
+  color: #ff77bd;
+
+  font-size: 10px;
+  letter-spacing: 0.42em;
+}
+
+.story h2,
+.memory h2,
+.video-story h2 {
+  margin: 0 0 13px;
+
+  font-family: Georgia, serif;
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+
+  transform: translateY(8px);
+
+  transition:
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+
+.story-visible h2,
+.memory-visible h2,
+.video-story-visible h2 {
+  transform: translateY(0);
+}
+
+.story p:not(.story-label),
+.memory p:not(.story-label),
+.video-story p:not(.story-label) {
+  margin: 0 auto 24px;
+
+  max-width: 500px;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 14px;
+  line-height: 1.8;
+
+  opacity: 0;
+
+  transform: translateY(8px);
+
+  transition:
+    opacity 1.2s ease 0.25s,
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+
+.story-visible p:not(.story-label),
+.memory-visible p:not(.story-label),
+.video-story-visible p:not(.story-label) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-button {
+  pointer-events: auto;
+
+  border: 1px solid rgba(255, 124, 193, 0.4);
+  border-radius: 100px;
+
+  padding: 12px 23px;
+
+  color: white;
+  background: rgba(255, 255, 255, 0.035);
+
+  backdrop-filter: blur(14px);
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  transform: translateY(10px);
+
+  transition:
+    opacity 1.2s ease 0.4s,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.4s,
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.story-visible .story-button,
+.memory-visible .story-button,
+.video-story-visible .story-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-button:hover {
+  transform: translateY(-2px);
+
+  background: rgba(255, 91, 176, 0.12);
+
+  border-color: rgba(255, 124, 193, 0.6);
+
+  box-shadow: 0 0 25px rgba(255, 91, 176, 0.12);
+}
+
+.story-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* =========================================
+   FINAL MEMORY
+========================================= */
+
+.final-memory {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  padding: 0 24px 8vh;
+
+  text-align: center;
+  pointer-events: none;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 1.8s ease;
+}
+
+.final-memory-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.final-memory-content {
+  width: min(90%, 600px);
+
+  padding: 28px;
+
+  border-radius: 24px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(4, 2, 10, 0),
+    rgba(4, 2, 10, 0.68)
+  );
+
+  transform: translateY(35px) scale(0.97);
+
+  opacity: 0;
+
+  transition:
+    transform 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1.8s ease;
+}
+
+.final-memory-visible .final-memory-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.final-memory-content h2 {
+  margin: 0 0 13px;
+
+  font-family: Georgia, serif;
+
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+
+  text-shadow:
+    0 0 30px rgba(255, 72, 169, 0.18),
+    0 0 70px rgba(142, 86, 255, 0.1);
+}
+
+.final-memory-content p:not(.story-label) {
+  margin: 0 auto 24px;
+
+  max-width: 500px;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* Final scene gets a slightly stronger glow */
+
+.final-memory-visible .story-label {
+  animation: finalLabel 1.8s ease both;
+}
+
+.final-memory-visible h2 {
+  animation: finalTitle 2.2s 0.15s ease both;
+}
+
+.final-memory-visible p:not(.story-label) {
+  animation: finalParagraph 2.2s 0.35s ease both;
+}
+
+/* =========================================
+   MUSIC
+========================================= */
+
+.music-button {
+  position: absolute;
+  z-index: 10;
+
+  right: 22px;
+  bottom: 22px;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 100px;
+
+  padding: 9px 15px;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  background: rgba(10, 7, 17, 0.45);
+
+  backdrop-filter: blur(15px);
+
+  cursor: pointer;
+
+  font-size: 11px;
+  letter-spacing: 0.08em;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.music-button:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(255, 120, 190, 0.35);
+
+  background: rgba(25, 10, 30, 0.6);
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes introRise {
+  from {
+    opacity: 0;
+    transform: translateY(45px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes finalLabel {
+  from {
+    opacity: 0;
+    letter-spacing: 0.7em;
+  }
+
+  to {
+    opacity: 1;
+    letter-spacing: 0.42em;
+  }
+}
+
+@keyframes finalTitle {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes finalParagraph {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .intro-content {
+    width: 92%;
+  }
+
+  .intro h1 {
+    font-size: clamp(54px, 18vw, 88px);
+  }
+
+  .intro-text {
+    margin-top: 28px;
+    font-size: 12px;
+  }
+
+  .enter-button {
+    padding: 14px 24px;
+    font-size: 13px;
+  }
+
+  .story,
+  .memory,
+  .video-story {
+    padding: 0 16px 9vh;
+  }
+
+  .story-content,
+  .memory-content,
+  .video-story-content {
+    width: min(94%, 600px);
+    padding: 20px;
+  }
+
+  .story h2,
+  .memory h2,
+  .video-story h2 {
+    font-size: 32px;
+  }
+
+  .story p:not(.story-label),
+  .memory p:not(.story-label),
+  .video-story p:not(.story-label) {
+    font-size: 13px;
+  }
+
+  .final-memory {
+    padding: 0 16px 9vh;
+  }
+
+  .final-memory-content {
+    width: min(94%, 600px);
+    padding: 20px;
+  }
+
+  .final-memory-content h2 {
+    font-size: 32px;
+  }
+
+  .final-memory-content p:not(.story-label) {
+    font-size: 13px;
+  }
+
+  .music-button {
+    right: 15px;
+    bottom: 15px;
+  }
+}
+  }
+}
